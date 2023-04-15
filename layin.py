@@ -10,7 +10,8 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
+import sys                                                 #导入sys模块
+from PyQt5.QtWidgets import QApplication, QMainWindow      #导入PyQt模块
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -37,6 +38,8 @@ class Ui_MainWindow(object):
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 22))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
+
+
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
@@ -50,3 +53,14 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", "系统登录界面"))
         self.label_2.setText(_translate("MainWindow", "用户名"))
         self.pushButton.setText(_translate("MainWindow", "登录"))
+
+
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)                           #使用sys新建一个应用（Application）对象
+    MainWindow = QMainWindow()                             #新建一个Qt中QMainWindow()类函数
+    ui =Ui_MainWindow()                                    #定义ui，与我们设置窗体绑定
+    ui.setupUi(MainWindow)                                 #为MainWindow绑定窗体
+    MainWindow.show()                                      #将MainWindow窗体进行显示
+    sys.exit(app.exec_())                                  #进入主循环，事件开始处理，接收由窗口触发的事件
