@@ -33,15 +33,19 @@ def Face_Detect_Pic(imagepath):
     for x, y, w, h in faces_rect:
         cv2.rectangle(dst, (x, y), (x + w, y + h), (0, 0, 255), 1)  # 画出矩形框
     #注意x轴和y轴可能是反过来的
-    crop = dst[y:y + h,x:x + w]
-
+    #[[ 38  55 135 135]]
+    crop = image[y:y + h,x:x + w]
+    #crop = dst[x:x + w,y:y + h]
 
     #图像进行一次压缩
-    #new_image=cv2.resize(dst,(480,320))
+    new_image=cv2.resize(crop,(128,128))
     # 显示
-    cv2.imshow("kuang1", crop)
+    cv2.imshow("kuang1", new_image)
     cv2.imshow("kuang2", dst)
     cv2.waitKey(0)
+    new_name=imagepath.replace("lyf","tlyf.jpg")
+    #print(new_name)
+    cv2.imwrite(new_name,new_image)
     return dst
 
-Face_Detect_Pic("./photo/liuyifei/lyf1.jpg")
+Face_Detect_Pic("./photo/liuyifei/lyf3.jpg")
