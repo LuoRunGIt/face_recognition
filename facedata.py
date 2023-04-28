@@ -43,9 +43,11 @@ def Face_Detect_Pic(imagepath):
     cv2.imshow("kuang1", new_image)
     cv2.imshow("kuang2", dst)
     cv2.waitKey(0)
-    new_name=imagepath.replace("lyf","tlyf.jpg")
+    new_name=imagepath.replace(".jpeg",".jpg")
     #print(new_name)
     cv2.imwrite(new_name,new_image)
     return dst
 
-Face_Detect_Pic("./photo/liuyifei/lyf3.jpg")
+
+#使用
+Face_Detect_Pic("./photo/luorun/89.jpg")

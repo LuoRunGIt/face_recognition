@@ -60,8 +60,8 @@ def ReFileName(dirPath):
             name = dirPath + '/' + c
             # print(name)
             img = cv2.imread(name,cv2.IMREAD_GRAYSCALE)
-          #  cv2.imshow("",img)
-           # cv2.waitKey(0)
+            cv2.imshow("",img)
+            cv2.waitKey(0)
             faces.append(img)
     return faces
 
@@ -73,20 +73,24 @@ labelyangmi = np.array([0 for i in range(len(yangmi))])  # 标签处理
 # 刘亦菲照读取
 dirPathliuyifei = "./photo/liuyifei/img"  # 文件路径
 liuyifei = ReFileName(dirPathliuyifei)  # 调用函数
-print("len", len(liuyifei))
+#print("len", len(liuyifei))
 labelliuyifei = np.array([1 for i in range(len(liuyifei))])  # 标签处理
 #y1 = np.array(yangmi)
 
-#print(y1.shape)
-#y2 = np.array(liuyifei)
-# 拼接并打乱数据特征和标签
-#x = np.concatenate((y1, y2), axis=0)
-print(len(liuyifei))
-print(len(liuyifei[1]),len(liuyifei[2]))
-print(len(liuyifei[1][1]))
-x = np.concatenate((liuyifei, yangmi), axis=0)
-y = np.concatenate((labelyangmi, labelliuyifei), axis=0)
+dirPathwl = "./photo/wl"  # 文件路径
+wulei = ReFileName(dirPathwl)  # 调用函数
+labelwl = np.array([2 for i in range(len(wulei))])  # 标签处理
 
+dirPathyyqx = "./photo/yyqx"  # 文件路径
+yyqx = ReFileName(dirPathyyqx)  # 调用函数
+labelyyqx = np.array([3 for i in range(len(yyqx))])  # 标签处理
+
+dirPathlr = "./photo/luorun"  # 文件路径
+lr = ReFileName(dirPathlr)  # 调用函数
+labellr = np.array([4 for i in range(len(lr))])  # 标签处理
+x = np.concatenate((yangmi,liuyifei,wulei,yyqx,lr), axis=0)
+y = np.concatenate((labelyangmi, labelliuyifei,labelwl,labelyyqx,labellr), axis=0)
+print()
 index = [i for i in range(len(y))]  # test_data为测试数据
 np.random.seed(1)
 np.random.shuffle(index)  # 打乱索引

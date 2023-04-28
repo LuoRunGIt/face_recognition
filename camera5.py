@@ -43,7 +43,7 @@ if __name__ == "__main__":
     #cv2.imshow("img", img)
 
     Face_Detect_Pic("./photo/duo.jpg")  # 人脸识别（图片）
-    Face_Detect_Pic('C:/Users/Administrator/Pictures/miaomiao/1.jpg')  # 人脸识别（图片）
+   # Face_Detect_Pic('C:/Users/Administrator/Pictures/miaomiao/1.jpg')  # 人脸识别（图片）
 
     cv2.waitKey(0)
 

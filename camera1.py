@@ -15,7 +15,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 
 class Ui_CamShow(object):
     def __init__(self):
-        self.camera=qt_cv_camera.mycamera()
+        self.camera = qt_cv_camera.mycamera()
 
     def setupUi(self, CamShow):
         CamShow.setObjectName("CamShow")
@@ -41,6 +41,7 @@ class Ui_CamShow(object):
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(self.ColorFm)
         self.label_2.setGeometry(QtCore.QRect(20, 70, 21, 16))
+        # 这里这个框和摄像头图像进行绑定
         self.label_2.setObjectName("label_2")
         self.horizontalSlider = QtWidgets.QSlider(self.ColorFm)
         self.horizontalSlider.setGeometry(QtCore.QRect(50, 40, 160, 16))
@@ -57,6 +58,7 @@ class Ui_CamShow(object):
         self.horizontalSlider_3.setMaximum(255)
         self.horizontalSlider_3.setOrientation(QtCore.Qt.Horizontal)
         self.horizontalSlider_3.setObjectName("horizontalSlider_3")
+
         self.label_3 = QtWidgets.QLabel(self.ColorFm)
         self.label_3.setGeometry(QtCore.QRect(20, 100, 16, 16))
         self.label_3.setObjectName("label_3")
@@ -121,12 +123,16 @@ class Ui_CamShow(object):
         self.menu.setTitle(_translate("CamShow", "视频输入界面"))
 
     def opencm(self):
-       # sender=self.sender()
-        print("open",self.camera)
-
+        # sender=self.sender()
+        print("open", self.camera)
         self.camera.open()
+        #flag,self.image=self.camera.cap.read()
+        #show=cv2.resize(self.image)
+
     def closecm(self):
         self.camera.close()
+
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)  # 使用sys新建一个应用（Application）对象
     MainWindow = QMainWindow()  # 新建一个Qt中QMainWindow()类函数
